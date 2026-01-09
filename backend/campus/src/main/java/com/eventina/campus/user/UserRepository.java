@@ -1,4 +1,6 @@
 package com.eventina.campus.user;
 
-public class UserRepository extends JpaRepository<User, Long>{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public class UserRepository extends JpaRepository<User, Long> {
 }
