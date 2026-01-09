@@ -1,4 +1,4 @@
 package com.eventina.campus.user;
 
-public class UserRepository {
+public class UserRepository extends JpaRepository<User, Long>{
 }
