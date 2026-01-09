@@ -15,19 +15,16 @@ public class UserService {
     @Transactional
     public User createUser(User user) {
         userRepository.findByEmail(user.getEmail())
-                .ifPresent(exisitng -> {
-                throw new IllegalArgumentException("Email already in use" + user.getEmail());
+                .ifPresent(existing -> {
+                    throw new IllegalArgumentException("Email already in use: " + user.getEmail());
                 });
         return userRepository.save(user);
+    }
 
     @Transactional(readOnly = true)
-    public User findbyEmail(String email){
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email)
-            .orElseThrow(() -> new IllegalArgumentException("User with email not found" + email)
-        );
+                .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + email));
     }
 
-
-    
-    }
 }
