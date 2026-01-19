@@ -1,5 +1,6 @@
 package com.eventina.campus.user;
 
+import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -35,8 +36,11 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role;
+    private Set<Role> role;
 
     @Column(nullable = false)
-    private String fullName;
+    private String firstName;
+    
+    @Column(nullable = false)
+    private String lastName;
 }
