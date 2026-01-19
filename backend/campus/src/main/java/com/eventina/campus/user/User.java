@@ -36,7 +36,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Set<Role> role;
+    private Set<Role> roles;
 
     @Column(nullable = false)
     private String firstName;

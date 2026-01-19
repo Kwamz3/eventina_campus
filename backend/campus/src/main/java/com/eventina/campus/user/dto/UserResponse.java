@@ -26,7 +26,7 @@ public class UserResponse {
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .roles(user.getRole() != null ? user.getRole() : Set.of())
+                .roles(user.getRoles() != null ? user.getRoles() : Set.of())
                 .build();
     }
 }
