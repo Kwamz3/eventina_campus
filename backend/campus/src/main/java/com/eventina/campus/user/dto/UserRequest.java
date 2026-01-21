@@ -23,6 +23,9 @@ public class UserRequest {
     
     @NotBlank
     private String lastName;
+
+    @NotBlank
+    private String password;
     
     private Set<Role> roles;
 
