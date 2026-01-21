@@ -1,17 +1,16 @@
 package com.eventina.campus.user;
 
-
 import java.util.List;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 import com.eventina.campus.user.dto.UserResponse;
 import com.eventina.campus.user.dto.UserRequest;
-
 
 @RestController
 @RequestMapping("/users")
@@ -23,23 +22,24 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PostMapping
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
         User user = new User();
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setFirstName(request.getfirstName());
-        user.setLastName(request.getlastName());
-        user.setRoles(request.getRoles());
+        user.setEmail(userRequest.getEmail());
+        user.setPassword(userRequest.getPassword());
+        user.setFirstName(userRequest.getfirstName());
+        user.setLastName(userRequest.getlastName());
+        user.setRoles(userRequest.getRoles());
 
-        User created = UserService.createUser(user);
+        User created = userService.createUser(user);
         return new ResponseEntity<>(UserResponse.fromEntity(created),
-                HttpStatusCode.CREATED);
+                HttpStatus.CREATED);
     }
-    
+
     @GetMapping
     public List<UserResponse> getAllUsers() {
         return userService.findAll().stream()
-        .map(UserResponse:: fromEntity)
+                .map(UserResponse::fromEntity)
                 .toList();
     }
 }
