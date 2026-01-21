@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 import com.eventina.campus.user.dto.UserResponse;
+import com.eventina.campus.user.dto.UserRequest;
 
 
 @RestController
